@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Minimal Django File Upload Example</title>
+    </head>
+
+    <body>
+      <!-- Upload form. Note enctype attribute! -->
+      <fieldset>
+      <legend>Upload</legend>
+        <form action="{% url "list" %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>
+              {{ form.uploadfiles.label_tag }}
+              {{ form.non_field_errors }}
+              {{ form.uploadfiles.help_text }}
+              {{ form.uploadfiles.errors }}
+              {{ form.uploadfiles }}
+            </p>
+          <p><input type="submit" value="Upload"/></p>
+        </form>
+      </fieldset>
+
+        <!-- List of uploaded tracks -->
+          {% if genres %}
+          <fieldset>
+          <legend>Genres [{{ genres|length }}]</legend>
+          <ul>
+              {% for genre in genres %}
+                  <li><a href="">{{ genre.name }}</a></li>
+              {% endfor %}
+          </ul>
+        </fieldset>
+        {% endif %}
+
+        {% if artists %}
+        <fieldset>
+          <legend>Artists  [{{ artists|length }}]</legend>
+          <ul>
+              {% for artist in artists %}
+                  <li><a href="">{{ artist.name }}</a></li>
+              {% endfor %}
+          </ul>
+        </fieldset>
+        {% endif %}
+
+          {% if tracks %}
+          <fieldset>
+        <legend>Tracks  [{{ tracks|length }}]</legend>
+          <table>
+              <thead>
+                <th>Track</th>
+                <th>Duration</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genre</th>
+              </thead>
+              <tbody>
+              {% for track in tracks %}
+                  <tr>
+                    <td><a href="{{ track.url.url }}">{{ track.name }}</a></td>
+                    <td>{{ track.duration }}</td>
+                    <td>{{ track.album.name }}</td>
+                    <td>{{ track.artist.name }}</td>
+                    <td>{{ track.genre.name}}</td>
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </fieldset>
+    {% endif %}
+
+    </body>
+
+</html>

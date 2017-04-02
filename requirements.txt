@@ -1,0 +1,13 @@
+Django
+django-filter
+django-js-reverse
+django-webpack-loader
+django-allauth
+djangorestframework
+Markdown
+coreapi
+pillow
+mutagen
+sacad
+drf-extensions
+django-cors-headers

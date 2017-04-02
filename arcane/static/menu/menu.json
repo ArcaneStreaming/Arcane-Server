@@ -1,0 +1,8 @@
+{ "list":
+   [{ "name": "Playlists", "icon": "subject", "url":"/main/genres" },
+   { "name": "Upload", "icon": "cloud_upload", "url": "/main/uploads" },
+   { "name": "Radio", "icon": "play_circle_outline", "url": "/main/genres"},
+   { "name": "My Music", "icon": "music_note", "url": "/main/artist-music"},
+   { "name": "Profile", "icon": "account_circle", "url": "/main/artist"},
+   { "name": "About", "icon": "info", "url": "/about"}]
+}

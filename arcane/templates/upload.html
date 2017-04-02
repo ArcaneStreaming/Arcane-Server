@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Minimal Django File Upload Example</title>
+    </head>
+
+    <body>
+      <!-- Upload form. Note enctype attribute! -->
+          {% if tracks %}
+          <fieldset>
+        <legend>Tracks  [{{ tracks|length }}]</legend>
+          <table>
+              <thead>
+                <th>Track</th>
+                <th>Duration</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Genre</th>
+              </thead>
+              <tbody>
+              {% for track in tracks %}
+                  <tr>
+                    <td><a href="{{ track.url.url }}">{{ track.name }}</a></td>
+                    <td>{{ track.duration }}</td>
+                    <td>{{ track.album.name }}</td>
+                    <td>{{ track.artist.name }}</td>
+                    <td>{{ track.genre.name}}</td>
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </fieldset>
+    {% endif %}
+
+    </body>
+
+</html>
