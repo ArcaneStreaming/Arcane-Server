@@ -99,3 +99,6 @@ db.sqlite3
 # Heroku items
 Procfile
 runtime.txt
+
+# Dev items
+webpack-stats-local.json
