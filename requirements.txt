@@ -11,3 +11,4 @@ mutagen
 sacad
 drf-extensions
 django-cors-headers
+gunicorn
