@@ -1,0 +1,1 @@
+/home/matrim/Documents/git/ArcaneStreaming/ArcaneClient/bundles/vendors.js

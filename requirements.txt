@@ -1,7 +1,6 @@
 Django
 django-filter
 django-js-reverse
-django-webpack-loader
 django-allauth
 djangorestframework
 Markdown
@@ -12,3 +11,4 @@ sacad
 drf-extensions
 django-cors-headers
 gunicorn
+whitenoise

@@ -102,3 +102,7 @@ runtime.txt
 
 # Dev items
 webpack-stats-local.json
+
+# Django folders
+media/
+static/
