@@ -59737,11 +59737,15 @@ var ConstructionMessage = function (_Component) {
          return _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_warning2.default, { color: _colors.yellow500, style: { width: '10vh', height: '10vh' } }),
             _react2.default.createElement(
-               'h3',
-               { style: this.props.styles.h3 },
-               'Under Construction'
+               'div',
+               { style: this.props.styles.header },
+               _react2.default.createElement(_warning2.default, { color: _colors.yellow600, style: { width: '12vh', height: '12vh' } }),
+               _react2.default.createElement(
+                  'h3',
+                  { style: this.props.styles.h3 },
+                  'Under Construction'
+               )
             ),
             _react2.default.createElement(
                'p',
@@ -59810,19 +59814,31 @@ var style = {
    },
    h3: {
       textAlign: 'center'
-   }
+   },
+   header: {}
 };
 
 var phoneStyle = {
    div: {
-      top: '50vh',
-      position: "relative",
+      bottom: '7vh',
+      position: "absolute",
       color: '#c22a36',
-      textAlign: 'center'
+      textAlign: 'center',
+      width: '100%',
+      paddingRight: '15vw'
    },
-   text: {},
+   text: {
+      width: '70vw',
+      margin: 'auto',
+      paddingRight: '10vw',
+      paddingLeft: '10vw'
+   },
    h3: {
       textAlign: 'center'
+   },
+   header: {
+      margin: 'auto',
+      width: '50vw'
    }
 };
 
@@ -59962,7 +59978,7 @@ var Logo = function (_Component) {
                   _react2.default.createElement(
                      'div',
                      { style: styles.logoSmall },
-                     _react2.default.createElement('img', { style: styles.img, src: 'images/logo-transparent.png' })
+                     _react2.default.createElement('img', { style: styles.img, src: 'static/images/logo-transparent.png' })
                   )
                ),
                _react2.default.createElement(
@@ -59971,7 +59987,7 @@ var Logo = function (_Component) {
                   _react2.default.createElement(
                      'div',
                      { style: styles.logoLarge },
-                     _react2.default.createElement('img', { style: styles.img, src: 'images/logo-transparent.png' })
+                     _react2.default.createElement('img', { style: styles.img, src: 'static/images/logo-transparent.png' })
                   )
                )
             ),
@@ -59981,7 +59997,7 @@ var Logo = function (_Component) {
                _react2.default.createElement(
                   'div',
                   { style: styles.logoSmall },
-                  _react2.default.createElement('img', { style: styles.img, src: 'images/logo-transparent.png' })
+                  _react2.default.createElement('img', { style: styles.img, src: 'static/images/logo-transparent.png' })
                )
             )
          );
@@ -60005,6 +60021,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactResponsive = require('react-responsive');
+
+var _reactResponsive2 = _interopRequireDefault(_reactResponsive);
 
 var _LeftSide = require('./LeftSide.jsx');
 
@@ -60040,10 +60060,32 @@ var Main = function (_Component) {
       value: function render() {
          return _react2.default.createElement(
             'div',
-            null,
-            _react2.default.createElement(_RightSide2.default, null),
-            _react2.default.createElement(_LeftSide2.default, null),
-            _react2.default.createElement(_Logo2.default, null)
+            { style: { height: '100%' } },
+            _react2.default.createElement(
+               _reactResponsive2.default,
+               { query: '(min-device-width: 560px)' },
+               _react2.default.createElement(
+                  _reactResponsive2.default,
+                  { query: '(min-width: 560px)' },
+                  _react2.default.createElement(_RightSide2.default, null),
+                  _react2.default.createElement(_LeftSide2.default, null),
+                  _react2.default.createElement(_Logo2.default, null)
+               ),
+               _react2.default.createElement(
+                  _reactResponsive2.default,
+                  { query: '(max-width: 559px)' },
+                  _react2.default.createElement(_RightSide2.default, null),
+                  _react2.default.createElement(_Logo2.default, null),
+                  _react2.default.createElement(_LeftSide2.default, null)
+               )
+            ),
+            _react2.default.createElement(
+               _reactResponsive2.default,
+               { query: '(max-device-width: 559px)' },
+               _react2.default.createElement(_RightSide2.default, null),
+               _react2.default.createElement(_Logo2.default, null),
+               _react2.default.createElement(_LeftSide2.default, null)
+            )
          );
       }
    }]);
@@ -60053,7 +60095,7 @@ var Main = function (_Component) {
 
 exports.default = Main;
 
-},{"./LeftSide.jsx":563,"./Logo.jsx":564,"./RightSide.jsx":566,"react":547}],566:[function(require,module,exports){
+},{"./LeftSide.jsx":563,"./Logo.jsx":564,"./RightSide.jsx":566,"react":547,"react-responsive":392}],566:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -60248,7 +60290,7 @@ var Summary = function (_Component) {
             _react2.default.createElement(
                'p',
                { style: this.props.styles.text },
-               'A music streaming app designed for both Artists and Listeners'
+               'A music streaming app designed for both Artists and Listeners '
             )
          );
       }

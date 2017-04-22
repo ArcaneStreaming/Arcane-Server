@@ -31,7 +31,7 @@ urlpatterns = [
     url(r'^api/users/', include('arcane.users.urls')),
     url(r'^favicon\.ico$', favicon_view),
     url(r'^app/', generic.TemplateView.as_view(template_name='app.html')),
-    url(r'^$', generic.TemplateView.as_view(template_name='app.html')),
+    url(r'^$', generic.TemplateView.as_view(template_name='construction.html')),
     # url(r'^api/', include(routers.SharedAPIRootRouter.router.urls)),
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
