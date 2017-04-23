@@ -60060,31 +60060,61 @@ var Main = function (_Component) {
       value: function render() {
          return _react2.default.createElement(
             'div',
-            { style: { height: '100%' } },
+            null,
             _react2.default.createElement(
                _reactResponsive2.default,
                { query: '(min-device-width: 560px)' },
                _react2.default.createElement(
                   _reactResponsive2.default,
                   { query: '(min-width: 560px)' },
-                  _react2.default.createElement(_RightSide2.default, null),
-                  _react2.default.createElement(_LeftSide2.default, null),
-                  _react2.default.createElement(_Logo2.default, null)
+                  _react2.default.createElement(
+                     'div',
+                     { style: {
+                           background: "url('static/images/background.png')",
+                           backgroundSize: '100% 100%',
+                           margin: '0',
+                           height: '100%',
+                           fontFamily: 'Aldrich'
+                        } },
+                     _react2.default.createElement(_RightSide2.default, null),
+                     _react2.default.createElement(_LeftSide2.default, null),
+                     _react2.default.createElement(_Logo2.default, null)
+                  )
                ),
                _react2.default.createElement(
                   _reactResponsive2.default,
                   { query: '(max-width: 559px)' },
-                  _react2.default.createElement(_RightSide2.default, null),
-                  _react2.default.createElement(_Logo2.default, null),
-                  _react2.default.createElement(_LeftSide2.default, null)
+                  _react2.default.createElement(
+                     'div',
+                     { style: {
+                           background: "url('static/images/phone_background.png')",
+                           backgroundSize: '100% 100%',
+                           margin: '0',
+                           height: '100%',
+                           fontFamily: 'Aldrich'
+                        } },
+                     _react2.default.createElement(_RightSide2.default, null),
+                     _react2.default.createElement(_Logo2.default, null),
+                     _react2.default.createElement(_LeftSide2.default, null)
+                  )
                )
             ),
             _react2.default.createElement(
                _reactResponsive2.default,
                { query: '(max-device-width: 559px)' },
-               _react2.default.createElement(_RightSide2.default, null),
-               _react2.default.createElement(_Logo2.default, null),
-               _react2.default.createElement(_LeftSide2.default, null)
+               _react2.default.createElement(
+                  'div',
+                  { style: {
+                        background: "url('static/images/phone_background.png')",
+                        backgroundSize: '100% 100%',
+                        margin: '0',
+                        height: '100%',
+                        fontFamily: 'Aldrich'
+                     } },
+                  _react2.default.createElement(_RightSide2.default, null),
+                  _react2.default.createElement(_Logo2.default, null),
+                  _react2.default.createElement(_LeftSide2.default, null)
+               )
             )
          );
       }
