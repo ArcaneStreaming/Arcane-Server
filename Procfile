@@ -1,1 +1,1 @@
-web: gunicorn arcane.wsgi
+web gunicorn arcane.wsgi
