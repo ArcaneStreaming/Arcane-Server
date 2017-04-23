@@ -9,6 +9,7 @@ pillow
 mutagen
 sacad
 drf-extensions
+dj-database-url==0.4.2
 django-cors-headers
 gunicorn
 whitenoise
