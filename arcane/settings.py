@@ -26,6 +26,9 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['www.arcanestreaming.com', 'arcanestreaming.herokuapp.com']
 
+######################################################
+# Deployment Settings                                #
+######################################################
 SECURE_HSTS_SECONDS = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -35,6 +38,9 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
 X_FRAME_OPTIONS = 'DENY'
+
+ADMINS = [('Shem', 'ssedrick1@gmail.com'), ('Arcane', 'arcanestreaming@gmail.com')]
+
 
 #DATA_UPLOAD_MAX_MEMORY_SIZE = None
 # Application definition
