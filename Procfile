@@ -1,1 +1,2 @@
-web gunicorn arcane.wsgi
+release: python manage.py migrate
+web: gunicorn arcane.wsgi

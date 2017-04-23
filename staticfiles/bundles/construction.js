@@ -59750,7 +59750,7 @@ var ConstructionMessage = function (_Component) {
             _react2.default.createElement(
                'p',
                { style: this.props.styles.text },
-               'We are currently developing the Arcane Streaming web application. Follow us on Facebook to keep up with release information as find some great new music to whet your appetite.'
+               'We are currently developing the Arcane Streaming web application. Follow us on Facebook to keep up with release information and find some great new music to whet your appetite.'
             )
          );
       }
