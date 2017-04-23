@@ -60071,9 +60071,12 @@ var Main = function (_Component) {
                      'div',
                      { style: {
                            background: "url('static/images/background.png')",
-                           backgroundSize: '100% 100%',
+                           backgroundSize: 'cover',
+                           backgroundPosition: 'center center',
+                           overflow: 'hidden',
+                           zIndex: 1,
                            margin: '0',
-                           height: '100%',
+                           height: '100vh',
                            fontFamily: 'Aldrich'
                         } },
                      _react2.default.createElement(_RightSide2.default, null),
@@ -60090,7 +60093,7 @@ var Main = function (_Component) {
                            background: "url('static/images/phone_background.png')",
                            backgroundSize: '100% 100%',
                            margin: '0',
-                           height: '100%',
+                           height: '100vh',
                            fontFamily: 'Aldrich'
                         } },
                      _react2.default.createElement(_RightSide2.default, null),
@@ -60106,9 +60109,12 @@ var Main = function (_Component) {
                   'div',
                   { style: {
                         background: "url('static/images/phone_background.png')",
-                        backgroundSize: '100% 100%',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center center',
+                        overflow: 'hidden',
+                        zIndex: 1,
                         margin: '0',
-                        height: '100%',
+                        height: '100vh',
                         fontFamily: 'Aldrich'
                      } },
                   _react2.default.createElement(_RightSide2.default, null),
