@@ -21,11 +21,16 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
+# SECRET_KEY = '7-*iz^9m+ce#k!4wiv0vb8e6a5homxqbw7*c=uwm4c$%7#ir9k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG')
+# DEBUG = True
 
-ALLOWED_HOSTS = ['www.arcanestreaming.com', 'arcanestreaming.herokuapp.com']
+ALLOWED_HOSTS = ['www.arcanestreaming.com', 'arcanestreaming.herokuapp.com',
+# 'localhost',
+# '0.0.0.0'
+]
 
 ######################################################
 # Deployment Settings                                #
