@@ -5,4 +5,10 @@
 <div id="app"></div>
 <script src="{% static 'bundles/vendors.js' %}" ></script>
 <script src="{% static 'bundles/App.js' %}" ></script>
+
+{% csrf_token %}
+<script type="text/javascript">
+// using jQuery
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+</script>
 {% endblock %}
