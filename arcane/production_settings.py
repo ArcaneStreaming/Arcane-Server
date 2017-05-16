@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 import dj_database_url
+from .custom_storages import StaticStorage, MediaStorage
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -194,7 +195,7 @@ AWS_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = 'https://' + AWS_CUSTOM_DOMAIN + '/' + MEDIAFILES_LOCATION + '/'
-DEFAULT_FILE_STORAGE = '.custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = MediaStorage
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -203,7 +204,7 @@ STATICFILES_LOCATION = 'static'
 
 STATIC_URL = 'https://' + AWS_CUSTOM_DOMAIN + '/' + STATICFILES_LOCATION + '/'
 
-STATICFILES_STORAGE = '.custom_storages.StaticStorage'
+STATICFILES_STORAGE = StaticStorage
 
 STATICFILES_DIRS = [
     'staticfiles'
