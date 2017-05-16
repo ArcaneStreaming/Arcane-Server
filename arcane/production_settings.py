@@ -193,7 +193,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_KEY')
 AWS_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com'
 
 MEDIAFILES_LOCATION = 'media'
-MEDIA_URL = 'https://' + AWS_S3_CUSTOM_DOMAIN + '/' + MEDIAFILES_LOCATION + '/'
+MEDIA_URL = 'https://' + AWS_CUSTOM_DOMAIN + '/' + MEDIAFILES_LOCATION + '/'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 # Static files (CSS, JavaScript, Images)
@@ -201,7 +201,7 @@ DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 STATICFILES_LOCATION = 'static'
 
-STATIC_URL = 'https://' + AWS_S3_CUSTOM_DOMAIN + '/' + STATICFILES_LOCATION + '/'
+STATIC_URL = 'https://' + AWS_CUSTOM_DOMAIN + '/' + STATICFILES_LOCATION + '/'
 
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
