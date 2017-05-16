@@ -14,3 +14,5 @@ django-cors-headers==2.0.2
 psycopg2
 gunicorn
 whitenoise==3.3.0
+boto==2.46.1
+django-storages==1.5.2
