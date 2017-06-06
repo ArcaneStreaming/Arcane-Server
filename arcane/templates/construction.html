@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+<style>
+   #main {
+      background: url('static/images/background.png');
+      background-size: 100% 100%;
+      margin: 0;
+      height: 100vh;
+      font-family: 'Roboto', sans-serif;
+   }
+   @media screen and (max-width: 559px) {
+      #main {
+         background: url('static/images/phone_background.png');
+         background-size: 100% 100%;
+         margin: 0;
+         height: 100vh;
+      }
+   }
+   .icon {
+      color: white;
+   }
+</style>
+<div id="main"></div>
+<script src="{% static 'bundles/construction.js' %}" ></script>
+{% endblock %}
