@@ -195,6 +195,7 @@ AWS_CUSTOM_DOMAIN = AWS_STORAGE_BUCKET_NAME + '.s3-us-west-2.amazonaws.com'
 MEDIAFILES_LOCATION = 'media'
 MEDIA_URL = 'https://' + AWS_CUSTOM_DOMAIN + '/' + MEDIAFILES_LOCATION + '/'
 DEFAULT_FILE_STORAGE = 'arcane.custom_storages.MediaStorage'
+MEDIA_ROOT = MEDIA_URL
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
