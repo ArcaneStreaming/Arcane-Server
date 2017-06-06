@@ -49,10 +49,32 @@ class Upload(View):
     def post(self, request):
         form = UploadForm(request.POST, request.FILES)
         files = request.FILES.getlist('uploadfiles')
-        # if form.is_valid():
+        filenames = request.POST.getlist('filenames')
+        album_artwork = request.FILES.get('albumArtwork')
+        album_name = request.POST.get('albumName')
+        artist = request.POST.get('artist')
+        album_genre = request.POST.get('albumGenre')
+        print(artist)
+        print(album_genre)
+        print(album_name)
+        print(album_artwork)
+        print(filenames)
+        print('Filenames length: ', len(filenames))
+
         newTracks = []
-        for f in files:
-            newTracks.append(Track.objects.create(url=f))
+        print(files)
+        print('Files length: ', len(files))
+
+        if form.is_valid() and len(filenames) == len(files):
+            artist = Artist.objects.get(pk=artist)
+            genre = Genre.objects.get(pk=album_genre)
+            newAlbum = Album.objects.create(name=album_name, artwork=album_artwork, genre=genre, artist=artist)
+            for file, name in zip(files, filenames):
+                newTracks.append(Track.objects.create(url=file, name=name, album=newAlbum, genre=genre, artist=artist))
+        else:
+            print("Filenames are not the same length as files")
+            return HttpResponse('Malformed request: filenames provided is of different length than files provided', status=400)
+
         newTracks = list(map((lambda track: TrackSerializer(track).data), newTracks))
         data = {'tracks': newTracks}
         return HttpResponse(dumps(data), content_type='application/json')

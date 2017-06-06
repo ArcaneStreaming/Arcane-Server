@@ -235,9 +235,12 @@ class Track(models.Model):
             path = default_storage.save(os.path.join(settings.MEDIA_ROOT,'tmp','temp.mp3'),
                    ContentFile(self.url.file.read()))
             track = get_track_info(os.path.join(settings.MEDIA_ROOT, path))
+            print(track['length'])
             iTitle, iAlbum, iArtwork, iArtist, iGenre, iDuration, iLength, iOrder = track['title'], track['album'], track['artwork'], track['artist'], track['genre'], track['duration'], track['length'], track['order']
             iOrder = int(iOrder.split('/')[0]) if (iOrder != '0') else None
-            print ('Uploading... [', iOrder, iTitle, iAlbum, iArtist, iGenre, iDuration, iLength,']')
+            print ('Uploading... [', iOrder, self.name, self.album.name, self.artist.name, self.genre.name, track['duration'], track['length'],']')
+            self.length = track['length']
+            self.duration = track['duration']
             if not self.name:
                 try:
                     check = Track.objects.get(name=iTitle)
