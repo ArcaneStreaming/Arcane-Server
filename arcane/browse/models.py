@@ -234,12 +234,9 @@ class Track(models.Model):
         if self.url:
             # temp_file = open(os.path.join(settings.MEDIA_ROOT, 'tmp', 'temp.mp3'), 'wb')
             # temp_file.write(ContentFile(self.url.file.read()))
-            path = default_storage.save(os.path.join(settings.MEDIA_ROOT,'tmp','temp.mp3'),
+            path = default_storage.save(os.path.join('tmp','temp.mp3'),
                    ContentFile(self.url.file.read()))
-            track = get_track_info(os.path.join(settings.MEDIA_ROOT, 'tmp', 'temp.mp3'))
-            print(self.url)
-            print(self.url.file)
-            print(ContentFile(self.url.file.read()))
+            track = get_track_info(os.path.join('tmp', 'temp.mp3'))
             # track = get_track_info(ContentFile(self.url.file.read()))
             # track = get_track_info(temp_file)
             print(track['length'])
