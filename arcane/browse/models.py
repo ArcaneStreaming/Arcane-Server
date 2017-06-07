@@ -212,7 +212,7 @@ class Album(models.Model):
 
 class Track(models.Model):
     play_count = models.BigIntegerField(default=0)
-    url = models.FileField(upload_to=upload_track, blank=True, null=True)
+    url = models.FileField(upload_to=upload_track, blank=True, null=True, max_length=256)
     genre = models.ForeignKey(Genre, blank=True, null=True)
     artist = models.ForeignKey(Artist, blank=True, null=True)
     album = models.ForeignKey(Album, related_name='tracks', blank=True, null=True, on_delete=models.CASCADE)
