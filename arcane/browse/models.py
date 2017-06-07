@@ -232,10 +232,6 @@ class Track(models.Model):
 
     def save(self, *args, **kwargs):
         if self.url:
-            # temp_file = open(os.path.join(settings.MEDIA_ROOT, 'tmp', 'temp.mp3'), 'wb')
-            # temp_file.write(ContentFile(self.url.file.read()))
-            # path = default_storage.save(os.path.join('tmp','temp.mp3'),
-            #        ContentFile(self.url.file.read()))
             track = get_track_info(self.url.file.temporary_file_path())
             print(track['length'])
             iTitle, iAlbum, iArtwork, iArtist, iGenre, iDuration, iLength, iOrder = track['title'], track['album'], track['artwork'], track['artist'], track['genre'], track['duration'], track['length'], track['order']
@@ -281,5 +277,4 @@ class Track(models.Model):
                     new_album = Album(name=iAlbum, genre=self.genre, artist=self.artist, artwork=new_artwork)
                     new_album.save()
                     self.album = new_album
-            path = default_storage.delete(os.path.join(settings.MEDIA_ROOT,'tmp','temp.mp3'))
         super(Track, self).save(*args, **kwargs)
