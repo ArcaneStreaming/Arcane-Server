@@ -34,5 +34,5 @@ urlpatterns = [
     url(r'^$', generic.TemplateView.as_view(template_name='construction.html')),
     # url(r'^api/', include(routers.SharedAPIRootRouter.router.urls)),
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^.well-known/acme-challenge/Gh-8m2Pl14h5ICX-KtpnJeQkIbAFGSEH7iuowIDR9qE', letsencrypt, name='letsencrtypt')
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    # url(r'^.well-known/acme-challenge/Gh-8m2Pl14h5ICX-KtpnJeQkIbAFGSEH7iuowIDR9qE', letsencrypt, name='letsencrtypt')
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
