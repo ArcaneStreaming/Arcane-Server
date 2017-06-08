@@ -59933,6 +59933,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var host = "https://arcanestreaming.s3-us-west-2.amazonaws.com/";
+
 var styles = {
    img: {
       width: "100%",
@@ -59978,7 +59980,7 @@ var Logo = function (_Component) {
                   _react2.default.createElement(
                      'div',
                      { style: styles.logoSmall },
-                     _react2.default.createElement('img', { style: styles.img, src: 'static/images/logo-transparent.png' })
+                     _react2.default.createElement('img', { style: styles.img, src: host + "static/images/logo-transparent.png" })
                   )
                ),
                _react2.default.createElement(
@@ -59987,7 +59989,7 @@ var Logo = function (_Component) {
                   _react2.default.createElement(
                      'div',
                      { style: styles.logoLarge },
-                     _react2.default.createElement('img', { style: styles.img, src: 'static/images/logo-transparent.png' })
+                     _react2.default.createElement('img', { style: styles.img, src: host + "static/images/logo-transparent.png" })
                   )
                )
             ),
@@ -59997,7 +59999,7 @@ var Logo = function (_Component) {
                _react2.default.createElement(
                   'div',
                   { style: styles.logoSmall },
-                  _react2.default.createElement('img', { style: styles.img, src: 'static/images/logo-transparent.png' })
+                  _react2.default.createElement('img', { style: styles.img, src: host + "static/images/logo-transparent.png" })
                )
             )
          );
@@ -60046,6 +60048,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var host = 'https://arcanestreaming.s3-us-west-2.amazonaws.com/';
+
 var Main = function (_Component) {
    _inherits(Main, _Component);
 
@@ -60070,7 +60074,7 @@ var Main = function (_Component) {
                   _react2.default.createElement(
                      'div',
                      { style: {
-                           background: "url('static/images/background.png')",
+                           background: "url('" + host + "static/images/background.png')",
                            backgroundSize: 'cover',
                            backgroundPosition: 'center center',
                            overflow: 'hidden',
@@ -60090,7 +60094,7 @@ var Main = function (_Component) {
                   _react2.default.createElement(
                      'div',
                      { style: {
-                           background: "url('static/images/phone_background.png')",
+                           background: "url('" + host + "static/images/phone_background.png')",
                            backgroundSize: '100% 100%',
                            margin: '0',
                            height: '100vh',
@@ -60108,7 +60112,7 @@ var Main = function (_Component) {
                _react2.default.createElement(
                   'div',
                   { style: {
-                        background: "url('static/images/phone_background.png')",
+                        background: "url('" + host + "static/images/phone_background.png')",
                         backgroundSize: 'cover',
                         backgroundPosition: 'center center',
                         overflow: 'hidden',
