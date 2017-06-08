@@ -200,6 +200,7 @@ MEDIA_ROOT = 'media/'
 STATICFILES_LOCATION = 'static'
 
 STATIC_URL = 'https://' + AWS_CUSTOM_DOMAIN + '/' + STATICFILES_LOCATION + '/'
+STATIC_ROOT = 'static/'
 
 STATICFILES_STORAGE = 'arcane.custom_storages.StaticStorage'
 
