@@ -2,6 +2,7 @@ from django.conf.urls import url, include
 from rest_framework import routers, serializers, viewsets, filters, validators
 from rest_framework.decorators import detail_route
 from rest_framework.renderers import JSONRenderer
+from rest_framework_extensions.mixins import NestedViewSetMixin
 from json import dumps
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -76,21 +77,6 @@ class UserViewSet(viewsets.ModelViewSet):
                 listener.save()
                 # return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-# class LoginSerializer(serializers.HyperlinkedModelSerializer):
-#     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-#     class Meta:
-#         model = Login
-#         fields = ('id', 'username', 'user', 'password')
-#
-# class LoginViewSet(viewsets.ModelViewSet):
-#     filter_backends = (filters.DjangoFilterBackend,)
-#     filter_fields = ('id', 'username', 'user')
-#     queryset = Login.objects.all()
-#     serializer_class = LoginSerializer
-#     lookup_field = "id"
-#
-#     def perform_create(self, serializer):
-#         serializer.save()
 
 class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
     tracks = serializers.PrimaryKeyRelatedField(queryset=Track.objects.all(), many=True)
@@ -110,7 +96,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
         serializer.save()
 
     @detail_route(methods=['get'], url_path='tracks')
-    def get_tracks(self, request, id=None):
+    def tracks(self, request, id=None):
         playlist = Playlist.objects.get(id=id)
         if playlist:
             tracks = list(map((lambda track: TrackSerializer(track).data), playlist.tracks.all()))
@@ -118,6 +104,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
             tracks = []
         data = {'tracks': tracks}
         return HttpResponse(dumps(data), content_type='application/json')
+
 
 def router_register(router):
     router.register(r'users', SettingsViewSet)
