@@ -59872,7 +59872,7 @@ var LeftSide = function (_Component) {
                         { style: { textAlign: 'center' } },
                         _react2.default.createElement(_materialUi.RaisedButton, {
                            href: 'https://www.facebook.com/arcane28/',
-                           icon: _react2.default.createElement('i', { className: 'icon fa fa-facebook-official fa-lg' }),
+                           icon: _react2.default.createElement('i', { className: 'fa fa-facebook-official fa-lg', style: 'color: white' }),
                            secondary: true,
                            label: 'Follow us',
                            style: style.icon
@@ -60244,7 +60244,7 @@ var RightSide = function (_Component) {
                      _react2.default.createElement(_Summary2.default, { styles: phoneStyles }),
                      _react2.default.createElement(_materialUi.RaisedButton, {
                         href: 'https://www.facebook.com/arcane28/',
-                        icon: _react2.default.createElement('i', { className: 'icon fa fa-facebook-official fa-lg' }),
+                        icon: _react2.default.createElement('i', { className: 'fa fa-facebook-official fa-lg', style: 'color: white' }),
                         primary: true,
                         label: 'Follow us',
                         style: phoneStyles.icon
@@ -60264,7 +60264,7 @@ var RightSide = function (_Component) {
                      { style: phoneStyles.button },
                      _react2.default.createElement(_materialUi.RaisedButton, {
                         href: 'https://www.facebook.com/arcane28/',
-                        icon: _react2.default.createElement('i', { className: 'icon fa fa-facebook-official fa-lg' }),
+                        icon: _react2.default.createElement('i', { className: 'fa fa-facebook-official fa-lg', style: 'color: white' }),
                         primary: true,
                         label: 'Follow us',
                         style: phoneStyles.icon
