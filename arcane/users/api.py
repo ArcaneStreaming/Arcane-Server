@@ -27,7 +27,7 @@ class SettingsViewSet(viewsets.ModelViewSet):
         serializer.save()
 
 class ListenerSerializer(serializers.HyperlinkedModelSerializer):
-    settings = serializers.PrimaryKeyRelatedField(queryset=Settings.objects.all())
+    settings = SettingsSerializer()
     artist = serializers.PrimaryKeyRelatedField(queryset=Artist.objects.all())
     user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
     class Meta:

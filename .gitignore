@@ -102,6 +102,7 @@ db.sqlite3
 
 # Dev items
 webpack-stats-local.json
+webpack-stats-prod-local.json
 
 # Django folders
 media/
