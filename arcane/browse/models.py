@@ -39,7 +39,7 @@ def save_resize_image(image_to_resize, size, path_to_save):
         image.thumbnail(max_size)
     image_io = BytesIO()
     image.save(image_io, format='JPEG')
-    default_storage.save(path_to_save, ContentFile(image_io.read()))
+    # default_storage.save(path_to_save, ContentFile(image_io.read()))
     return
 
 def get_genre_icon(genre):
@@ -121,7 +121,7 @@ def snag_album_artwork(artist, album):
         print('Artwork Downloaded...')
     except:
         print('Unable to Download Artwork... ')
-    path = default_storage.delete(path)
+    # path = default_storage.delete(path)
     return save_read_album_artwork(data, artist, album)
 
 def get_track_info(filename):
