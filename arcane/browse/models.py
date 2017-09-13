@@ -39,7 +39,7 @@ def save_resize_image(image_to_resize, size, path_to_save):
         image.thumbnail(max_size)
     image_io = BytesIO()
     image.save(image_io, format='JPEG')
-    default_storage.save(path_to_save, ContentFile(image_io.getvalue()))
+    default_storage.save(path_to_save, ContentFile(image_io.read()))
     return
 
 def get_genre_icon(genre):
