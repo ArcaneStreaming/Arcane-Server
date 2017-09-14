@@ -231,7 +231,7 @@ class Track(models.Model):
         return '%d: %s' % (self.id, self.name)
 
     def save(self, *args, **kwargs):
-        if self.url:
+        if self.url and self.url.file:
             track = get_track_info(self.url.file.temporary_file_path())
             print(track['length'])
             iTitle, iAlbum, iArtwork, iArtist, iGenre, iDuration, iLength, iOrder = track['title'], track['album'], track['artwork'], track['artist'], track['genre'], track['duration'], track['length'], track['order']
