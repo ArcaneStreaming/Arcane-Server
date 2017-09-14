@@ -231,7 +231,7 @@ class Track(models.Model):
         return '%d: %s' % (self.id, self.name)
 
     def save(self, *args, **kwargs):
-        if self.url and self.url.file:
+        if self.url and not isinstance(self.url, S3BotoStorageFile):
             track = get_track_info(self.url.file.temporary_file_path())
             print(track['length'])
             iTitle, iAlbum, iArtwork, iArtist, iGenre, iDuration, iLength, iOrder = track['title'], track['album'], track['artwork'], track['artist'], track['genre'], track['duration'], track['length'], track['order']
