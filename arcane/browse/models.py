@@ -15,6 +15,7 @@ from io import BytesIO
 import requests
 import re
 from arcane.browse.helpers import Genre_Helpers
+from storages.backends.s3boto import S3BotoStorageFile
 
 
 
