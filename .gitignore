@@ -106,3 +106,4 @@ webpack-stats-local.json
 # Django folders
 media/
 static/
+migrations/
