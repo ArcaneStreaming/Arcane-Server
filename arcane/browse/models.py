@@ -18,6 +18,8 @@ from arcane.browse.helpers import Genre_Helpers
 from storages.backends.s3boto import S3BotoStorageFile
 
 
+def upload_location_icon(instance, file):
+    return "locations/" + slugify(instance.name) + "/icons/" + file
 
 def upload_genre_icon(instance, file):
     return "genres/" + slugify(instance.name) + "/icons/" + file
@@ -79,6 +81,21 @@ def save_genre_icon(genre, path):
     path = os.path.join(settings.MEDIA_ROOT, 'genres' , slugify(genre) , 'icons', 'icon.jpg')
     save_resize_image(data, 600, path)
     return ("genres/" + slugify(genre) + "/icons/icon.jpg")
+
+def save_location_icon(location, path):
+    if not path:
+        return None
+    data = "No Icon"
+    try:
+        f = open(path, 'rb')
+        data = f.read()
+        f.close()
+        print('Icon Found...')
+    except:
+        print('No Icon... ')
+    path = os.path.join(settings.MEDIA_ROOT, 'locations' , slugify(location) , 'icons', 'icon.jpg')
+    save_resize_image(data, 600, path)
+    return ("locations/" + slugify(location) + "/icons/icon.jpg")
 
 def snag_artist_photo(artist):
     print('No Cover Photo Found... Downloading Now...')
@@ -146,6 +163,16 @@ def get_track_info(filename):
         'bpm': short_tags.get('bpm', ['0'])[0]
     }
     return track_info
+
+class Location(models.Model):
+    name = models.CharField(max_length=50, unique=True)
+    icon = models.ImageField(upload_to=upload_location_icon, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return '%d: %s' % (self.id, self.name)
 
 class Genre(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -221,6 +248,7 @@ class Track(models.Model):
     duration = models.CharField(max_length=200, blank=True)
     length = models.BigIntegerField(blank=True)
     order = models.IntegerField(blank=True, null=True)
+    explicit = models.BooleanField(default=True)
 
     # class Meta:
     #     unique_together = ('album', 'order')

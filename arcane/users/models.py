@@ -8,12 +8,12 @@ from arcane import settings
 from arcane.browse.models import Track, Artist
 
 class Settings(models.Model):
-    ARCANE_DARK = 'DARK'
-    ARCANE_LIGHT = 'LIGH'
-    PANDORA = 'PAND'
-    SPOTIFY = 'SPOT'
-    GOOGLE_PLAY = 'PLAY'
-    CUSTOM = 'CUST'
+    ARCANE_DARK = 'ARCANE DARK'
+    ARCANE_LIGHT = 'ARCANE LIGHT'
+    PANDORA = 'PANDORA'
+    SPOTIFY = 'SPOTIFY'
+    GOOGLE_PLAY = 'GOOGLE PLAY'
+    CUSTOM = 'CUSTOM'
     THEME_CHOICES = (
         (ARCANE_DARK, 'ARCANE_DARK'),
         (ARCANE_LIGHT, 'ARCANE_LIGHT'),
@@ -22,18 +22,18 @@ class Settings(models.Model):
         (GOOGLE_PLAY, 'GOOGLE_PLAY'),
         (CUSTOM, 'CUSTOM'),
     )
-    RIGHT = 'RIGH'
+    RIGHT = 'RIGHT'
     LEFT = 'LEFT'
-    HEADER = 'HEAD'
-    FOOTER = 'FOOT'
+    HEADER = 'HEADER'
+    FOOTER = 'FOOTER'
     PLAYER_POSITION_CHOICES = (
         (RIGHT, 'RIGHT DRAWER'),
         (LEFT, 'LEFT DRAWER'),
         (HEADER, 'HEADER'),
         (FOOTER, 'FOOTER'),
     )
-    theme = models.CharField(max_length=4, choices=THEME_CHOICES, default=ARCANE_DARK)
-    player_pos = models.CharField(max_length=4, choices=PLAYER_POSITION_CHOICES, default=RIGHT)
+    theme = models.CharField(max_length=16, choices=THEME_CHOICES, default=ARCANE_DARK)
+    player_pos = models.CharField(max_length=16, choices=PLAYER_POSITION_CHOICES, default=RIGHT)
     allow_explicit = models.BooleanField(default=False)
 
     def __str__(self):

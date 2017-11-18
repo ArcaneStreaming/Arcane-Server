@@ -2,7 +2,7 @@ from django.conf.urls import url, include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets, filters, pagination
 from rest_framework_extensions.mixins import NestedViewSetMixin
-from .models import Genre, Artist, ArtistSummary, Album, Track
+from .models import Genre, Artist, ArtistSummary, Album, Track, Location
 
 class TileResultsSetPagination(pagination.PageNumberPagination):
     page_size = 25
@@ -26,6 +26,24 @@ class GenreViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
     filter_fields = ('name', 'id')
     ordering_fields = ('name','color')
+    ordering = ('name')
+    lookup_field = "id"
+    pagination_class = TileResultsSetPagination
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+class LocationSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Location
+        fields = ('id', 'name', 'icon')
+
+class LocationViewSet(viewsets.ModelViewSet):
+    serializer_class = LocationSerializer
+    queryset = Location.objects.all()
+    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
+    filter_fields = ('name', 'id')
+    ordering_fields = ('name')
     ordering = ('name')
     lookup_field = "id"
     pagination_class = TileResultsSetPagination
@@ -132,3 +150,4 @@ def router_register(router):
     router.register(r'users', ArtistSummaryViewSet)
     router.register(r'users', GenreViewSet)
     router.register(r'users', TrackViewSet)
+    router.register(r'users', LocationViewSet)

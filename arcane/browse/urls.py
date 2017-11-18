@@ -17,6 +17,7 @@ router.register(r'artists', api.ArtistViewSet)
 router.register(r'albums', api.AlbumViewSet)
 router.register(r'genres', api.GenreViewSet)
 router.register(r'tracks', api.TrackViewSet)
+router.register(r'locations', api.LocationViewSet)
 
 urlpatterns = [
     url(r'^list/$', List.as_view()),
