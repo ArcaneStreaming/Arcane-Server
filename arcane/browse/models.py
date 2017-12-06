@@ -210,7 +210,13 @@ class Artist(models.Model):
 
 
 class ArtistSummary(models.Model):
-    artist = models.ForeignKey(Artist, related_name='summary', blank=False, null=False)
+    artist = models.ForeignKey(
+        Artist,
+        on_delete=models.CASCADE,
+        related_name='summary',
+        blank=False,
+        null=False
+    )
     summary = models.TextField()
 
     def __str__(self):
@@ -223,7 +229,7 @@ class ArtistSummary(models.Model):
 class Album(models.Model):
     name = models.CharField(max_length=50)
     artist = models.ForeignKey(Artist, related_name='albums', blank=True, null=True, on_delete=models.CASCADE)
-    genre = models.ForeignKey(Genre, blank=True, null=True)
+    genre = models.ForeignKey(Genre, on_delete=models.CASCADE, blank=True, null=True)
     artwork = models.ImageField(upload_to=upload_album_artwork, blank=True, null=True)
 
     def __str__(self):
@@ -240,8 +246,8 @@ class Album(models.Model):
 class Track(models.Model):
     play_count = models.BigIntegerField(default=0)
     url = models.FileField(upload_to=upload_track, blank=True, null=True)
-    genre = models.ForeignKey(Genre, blank=True, null=True)
-    artist = models.ForeignKey(Artist, blank=True, null=True)
+    genre = models.ForeignKey(Genre, blank=True, null=True, on_delete=models.CASCADE) 
+    artist = models.ForeignKey(Artist, blank=True, null=True, on_delete=models.CASCADE)
     album = models.ForeignKey(Album, related_name='tracks', blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
     duration = models.CharField(max_length=200, blank=True)

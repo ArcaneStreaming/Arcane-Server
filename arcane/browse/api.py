@@ -1,6 +1,8 @@
 from django.conf.urls import url, include
 from django.contrib.auth.models import User
-from rest_framework import routers, serializers, viewsets, filters, pagination
+from rest_framework import routers, serializers, viewsets, pagination
+from django_filters.rest_framework import DjangoFilterBackend, OrderingFilter
+from rest_framework.filters import SearchFilter
 from rest_framework_extensions.mixins import NestedViewSetMixin
 from .models import Genre, Artist, ArtistSummary, Album, Track, Location
 
@@ -23,7 +25,7 @@ class GenreSerializer(serializers.HyperlinkedModelSerializer):
 class GenreViewSet(viewsets.ModelViewSet):
     serializer_class = GenreSerializer
     queryset = Genre.objects.all()
-    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter,)
     filter_fields = ('name', 'id')
     ordering_fields = ('name','color')
     ordering = ('name')
@@ -41,7 +43,7 @@ class LocationSerializer(serializers.HyperlinkedModelSerializer):
 class LocationViewSet(viewsets.ModelViewSet):
     serializer_class = LocationSerializer
     queryset = Location.objects.all()
-    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter,)
     filter_fields = ('name', 'id')
     ordering_fields = ('name')
     ordering = ('name')
@@ -63,7 +65,7 @@ class ArtistSerializer(serializers.HyperlinkedModelSerializer):
 class ArtistViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     serializer_class = ArtistSerializer
     queryset = Artist.objects.all()
-    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter,)
     filter_fields = ('name', 'id', 'genre')
     ordering_fields = ('name','genre')
     ordering = ('name')
@@ -84,7 +86,7 @@ class ArtistSummarySerializer(serializers.HyperlinkedModelSerializer):
 class ArtistSummaryViewSet(NestedViewSetMixin, viewsets.ModelViewSet):
     serializer_class = ArtistSummarySerializer
     queryset = ArtistSummary.objects.all().select_related('artist')
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = ('id', 'artist')
     lookup_field = 'id'
 
@@ -105,7 +107,7 @@ class AlbumSerializer(serializers.HyperlinkedModelSerializer):
 class AlbumViewSet(viewsets.ModelViewSet):
     serializer_class = AlbumSerializer
     queryset = Album.objects.all()
-    filter_backends = (filters.DjangoFilterBackend, filters.OrderingFilter,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter,)
     filter_fields = ('name', 'id', 'artist', 'genre')
     ordering_fields = ('name','artist','genre','id')
     ordering = ('name',)
@@ -129,7 +131,7 @@ class TrackSerializer(serializers.HyperlinkedModelSerializer):
 class TrackViewSet(viewsets.ModelViewSet):
     serializer_class = TrackSerializer
     queryset = Track.objects.all()
-    filter_backends = (filters.DjangoFilterBackend,filters.OrderingFilter, filters.SearchFilter,)
+    filter_backends = (DjangoFilterBackend, OrderingFilter, SearchFilter,)
     filter_fields = ('album', 'id', 'name', 'genre', 'artist')
     ordering_fields = ('order', 'name','album','artist','genre','id')
     ordering = ('name',)

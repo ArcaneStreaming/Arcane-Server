@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.http import HttpResponseRedirect, JsonResponse, HttpResponse
 from json import dumps
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.views import View
 from django.db.models import Q
 from django.db import models
