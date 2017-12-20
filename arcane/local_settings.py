@@ -47,13 +47,14 @@ INSTALLED_APPS = [
 
 # Project Apps
 'arcane.browse',
-'arcane.users'
+'arcane.users',
 
+'webpack_loader',
 ]
 SITE_ID = 1
 
 REST_FRAMEWORK = {
-'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend','rest_framework.filters.SearchFilter', 'django_filters.rest_framework.OrderingFilter'),
 'DEFAULT_AUTHENTICATION_CLASSES': [
     'rest_framework.authentication.TokenAuthentication',
     'rest_framework.authentication.BasicAuthentication'
@@ -203,3 +204,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     'staticfiles'
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'CACHE': not DEBUG,
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'POLL_INTERVAL': 0.1,
+        'TIMEOUT': None,
+        'IGNORE': ['.+\.hot-update.js', '.+\.map']
+    }
+}

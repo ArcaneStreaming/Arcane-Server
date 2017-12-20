@@ -1,10 +1,15 @@
 from django.conf.urls import url, include
 from django.contrib.auth.models import User
 from rest_framework import routers, serializers, viewsets, pagination
-from django_filters.rest_framework import DjangoFilterBackend, OrderingFilter
-from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework_extensions.mixins import NestedViewSetMixin
 from .models import Genre, Artist, ArtistSummary, Album, Track, Location
+
+class LocationResultsSetPagination(pagination.PageNumberPagination):
+    page_size = 50
+    page_size_query_param = 'page_size'
+    max_page_size = 1000
 
 class TileResultsSetPagination(pagination.PageNumberPagination):
     page_size = 25
@@ -48,7 +53,7 @@ class LocationViewSet(viewsets.ModelViewSet):
     ordering_fields = ('name')
     ordering = ('name')
     lookup_field = "id"
-    pagination_class = TileResultsSetPagination
+    pagination_class = LocationResultsSetPagination
 
     def perform_create(self, serializer):
         serializer.save()
@@ -98,7 +103,7 @@ class AlbumSerializer(serializers.HyperlinkedModelSerializer):
     # artist = ArtistSerializer(read_only=True)
     # genre = GenreSerializer(read_only=True)
     artist = serializers.StringRelatedField(read_only=True)
-    genre = serializers.StringRelatedField(read_only=True)
+    genre = serializers.PrimaryKeyRelatedField(read_only=True)
     tracks = serializers.StringRelatedField(many=True)
     class Meta:
         model = Album

@@ -1,5 +1,5 @@
-Django
-django-filter
+Django==1.11
+django-filter==0.2.1
 django-js-reverse
 django-allauth
 djangorestframework
