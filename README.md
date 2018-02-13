@@ -6,7 +6,12 @@ Server code for Arcane Streaming project
 ```
 $ pip install virtualenv
 ```
-Create a virtual environment for this repository.
+
+Create a virtual environment for this repository:
+
+```
+$ virtualenv <path/to/virtualenvironment>
+```
 
 2) Enter the virtual env by running `source /path/to/env/bin/activate`
 
