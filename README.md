@@ -15,7 +15,7 @@ $ virtualenv <path/to/virtualenvironment>
 
 2) Enter the virtual env by running `source /path/to/env/bin/activate`
 
-3) Install the dev dependancies. Run `pip -r requirements(-dev).text`
+3) Install the dev dependancies. Run `pip -r requirements(-dev).txt`
 
 4) Create the database by running `./manage.py makemigrations` and migrate by running `./manage.py migrate`
 
