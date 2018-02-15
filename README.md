@@ -7,11 +7,7 @@ Server code for Arcane Streaming project
 $ pip install virtualenv
 ```
 
-Create a virtual environment for this repository:
-
-```
-$ virtualenv <path/to/virtualenvironment>
-```
+Create a virtual environment for this repository with `virtualenv <path/to/virtualenvironment>`
 
 2) Enter the virtual env by running `source /path/to/env/bin/activate`
 
@@ -19,7 +15,9 @@ $ virtualenv <path/to/virtualenvironment>
 
 4) Create the database by running `./manage.py makemigrations` and migrate by running `./manage.py migrate`
 
-5) Start the server by running `./manage.py runserver`. You will also need to run the client in tandem. 
+5) Start the server by running `./manage.py runserver`. You will also need to run the client in tandem.
+
+6) You will have to create a superuser for your local development environment with `./manage.py createsuperuser`
 
 ** Note: You will want to update the settings.py to check if it is local by adding your host name where 'Rhuarc' is.
 
