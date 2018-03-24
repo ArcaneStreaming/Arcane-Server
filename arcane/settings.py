@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import socket
-if socket.gethostname() == 'rhuarc' or socket.gethostname() == 'pop-os':
+if socket.gethostname() == 'nickzarate.local' or socket.gethostname() == 'DESKTOP-UUOP14F':
     from .local_settings import *
 else:
     from .production_settings import *
