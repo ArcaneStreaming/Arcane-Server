@@ -56,8 +56,8 @@ class Listener(models.Model):
     user = models.OneToOneField(User, related_name='listener', on_delete=models.CASCADE)
     location = models.CharField(max_length=3, default='USA')
     avatar = models.ImageField(upload_to=upload_user_avatar, blank=True, null=True)
-    artist = models.ForeignKey(Artist, blank=True, null=True)
-    settings = models.ForeignKey(Settings, blank=False, null=False, default=1)
+    artist = models.ForeignKey(Artist, blank=True, null=True, on_delete=models.CASCADE)
+    settings = models.ForeignKey(Settings, blank=False, null=False, default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         # userFirst = User.objects.get(id=self.user)
@@ -83,7 +83,7 @@ class Listener(models.Model):
 
 class Playlist(models.Model):
     name = models.CharField(max_length=50)
-    user = models.ForeignKey(Listener, blank=False, null=False)
+    user = models.ForeignKey(Listener, blank=False, null=False, on_delete=models.CASCADE)
     tracks = models.ManyToManyField(Track, symmetrical=False)
 
     def __str__(self):

@@ -3,6 +3,7 @@ from rest_framework import routers, serializers, viewsets, filters, validators
 from rest_framework.decorators import detail_route
 from rest_framework.renderers import JSONRenderer
 from rest_framework_extensions.mixins import NestedViewSetMixin
+from django_filters.rest_framework import DjangoFilterBackend
 from json import dumps
 from django.http import HttpResponse
 from django.contrib.auth.models import User
@@ -20,7 +21,7 @@ class SettingsSerializer(serializers.HyperlinkedModelSerializer):
 class SettingsViewSet(viewsets.ModelViewSet):
     queryset = Settings.objects.all()
     serializer_class = SettingsSerializer
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = ('id',)
 
     def perform_create(self, serializer):
@@ -35,7 +36,7 @@ class ListenerSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'user', 'location', 'avatar', 'artist', 'settings')
 
 class ListenerViewSet(viewsets.ModelViewSet):
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = ('id', 'artist')
     queryset = Listener.objects.all()
     serializer_class = ListenerSerializer
@@ -63,7 +64,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username', 'email', 'password', 'listener', 'first_name', 'last_name')
 
 class UserViewSet(viewsets.ModelViewSet):
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
     filter_fields = ('id', 'username', 'email')
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -86,7 +87,7 @@ class PlaylistSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'name', 'user', 'tracks')
 
 class PlaylistViewSet(viewsets.ModelViewSet):
-    filter_backends = (filters.DjangoFilterBackend,)
+    filter_backends = (DjangoFilterBackend,)
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
     filter_fields = ('id', 'user')
