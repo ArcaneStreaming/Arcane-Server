@@ -15,6 +15,7 @@ from io import BytesIO
 import requests
 import re
 from arcane.browse.helpers import Genre_Helpers
+from storages.backends.s3boto import S3BotoStorageFile
 
 
 def upload_location_icon(instance, file):
@@ -41,7 +42,7 @@ def save_resize_image(image_to_resize, size, path_to_save):
         image.thumbnail(max_size)
     image_io = BytesIO()
     image.save(image_io, format='JPEG')
-    default_storage.save(path_to_save, ContentFile(image_io.getvalue()))
+    # default_storage.save(path_to_save, ContentFile(image_io.read()))
     return
 
 def get_genre_icon(genre):
@@ -138,7 +139,7 @@ def snag_album_artwork(artist, album):
         print('Artwork Downloaded...')
     except:
         print('Unable to Download Artwork... ')
-    path = default_storage.delete(path)
+    # path = default_storage.delete(path)
     return save_read_album_artwork(data, artist, album)
 
 def get_track_info(filename):
@@ -246,9 +247,15 @@ class Album(models.Model):
 
 class Track(models.Model):
     play_count = models.BigIntegerField(default=0)
-    url = models.FileField(upload_to=upload_track, blank=True, null=True)
-    genre = models.ForeignKey(Genre, blank=True, null=True, on_delete=models.CASCADE) 
-    artist = models.ForeignKey(Artist, blank=True, null=True, on_delete=models.CASCADE)
+# <<<<<<< production
+    url = models.FileField(upload_to=upload_track, blank=True, null=True, max_length=512)
+    genre = models.ForeignKey(Genre, blank=True, null=True)
+    artist = models.ForeignKey(Artist, blank=True, null=True)
+# =======
+#     url = models.FileField(upload_to=upload_track, blank=True, null=True)
+#     genre = models.ForeignKey(Genre, blank=True, null=True, on_delete=models.CASCADE) 
+#     artist = models.ForeignKey(Artist, blank=True, null=True, on_delete=models.CASCADE)
+# >>>>>>> master
     album = models.ForeignKey(Album, related_name='tracks', blank=True, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, blank=True)
     duration = models.CharField(max_length=200, blank=True)
@@ -266,11 +273,9 @@ class Track(models.Model):
         return '%d: %s' % (self.id, self.name)
 
     def save(self, *args, **kwargs):
-        if self.url:
-            path = default_storage.save(os.path.join(settings.MEDIA_ROOT,'tmp','temp.mp3'),
-                   ContentFile(self.url.file.read()))
-            track = get_track_info(os.path.join(settings.MEDIA_ROOT, path))
-            print(track['length'], track)
+        if self.url and not isinstance(self.url.file, S3BotoStorageFile):
+            track = get_track_info(self.url.file.temporary_file_path())
+            print(track['length'])
             iTitle, iAlbum, iArtwork, iArtist, iGenre, iDuration, iLength, iOrder = track['title'], track['album'], track['artwork'], track['artist'], track['genre'], track['duration'], track['length'], track['order']
             iOrder = int(iOrder.split('/')[0]) if (iOrder != '0') else None
             print ('Uploading... [', iOrder, self.name, self.album.name, self.artist.name, self.genre.name, track['duration'], track['length'],']')
@@ -314,5 +319,4 @@ class Track(models.Model):
                     new_album = Album(name=iAlbum, genre=self.genre, artist=self.artist, artwork=new_artwork)
                     new_album.save()
                     self.album = new_album
-            path = default_storage.delete(os.path.join(settings.MEDIA_ROOT,'tmp','temp.mp3'))
         super(Track, self).save(*args, **kwargs)

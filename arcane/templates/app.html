@@ -1,9 +1,16 @@
 {% extends "base.html" %}
-{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
 
 {% block main %}
 <div id="app"></div>
+<script src="{% static 'bundles/vendors.js.gz' %}" ></script>
+<script src="{% static 'bundles/style.js.gz' %}" ></script>
+<script src="{% static 'bundles/store.js.gz' %}" ></script>
+<script src="{% static 'bundles/App.js.gz' %}" ></script>
 
-{% render_bundle 'vendors' %}
-{% render_bundle 'App' %}
+{% csrf_token %}
+<script type="text/javascript">
+// using jQuery
+var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+</script>
 {% endblock %}
