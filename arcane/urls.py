@@ -20,7 +20,7 @@ from django.views.generic import RedirectView
 from django.contrib import admin
 from django.views import generic
 from .views import CustomObtainAuthToken, letsencrypt
-
+ 
 favicon_view = RedirectView.as_view(url='/static/images/favicon.png', permanent=True)
 
 urlpatterns = [
