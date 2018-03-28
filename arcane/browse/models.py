@@ -195,6 +195,7 @@ class Artist(models.Model):
     name = models.CharField(max_length=50, unique=True)
     # user_id <- do me later
     genre = models.ForeignKey(Genre, related_name='artists', blank=True, null=True, on_delete=models.CASCADE)
+    location = models.ForeignKey(Location, related_name='artists', blank=True, null=True, on_delete=models.CASCADE)
     cover_photo = models.ImageField(upload_to=upload_artist_photo, blank=True, null=True)
 
     def __str__(self):
