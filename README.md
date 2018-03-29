@@ -22,7 +22,7 @@ Create a virtual environment for this repository with `virtualenv <path/to/virtu
 ** Note: You will want to update the settings.py to check if it is local by adding your host name where 'Rhuarc' is.
 
 ## Pushing to Heroku
-This section assumes that you have heroku [installed](https://devcenter.heroku.com/articles/heroku-cli "Heroku CLI Documentation") and logged into Arcane's heroku app, and that the heroku origin is added to git.
+This section assumes that you have heroku [installed](https://devcenter.heroku.com/articles/heroku-cli "Heroku CLI Documentation") and logged into Arcane's heroku app (with `heroku login` using Arcane's credentials, and that the heroku origin is added to git. (`heroku git:remote -a <app_name>`, where <app_name> is arcanestreaming)
 1) Copy over the production build of Client into the staticfiles 
 2) Commit the changes
 3) Run `git push heroku production:master`. This pushes the production branch up to heroku's master branch.
