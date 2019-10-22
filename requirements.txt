@@ -1,6 +1,6 @@
 Django==1.11.4
 django-filter==1.0.2
-django-js-reverse==0.7.3
+django-js-reverse==0.9.1
 django-allauth==0.31.0
 djangorestframework==3.6.2
 Markdown==2.6.8
