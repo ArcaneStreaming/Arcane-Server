@@ -2,7 +2,7 @@ Django==1.11.4
 django-filter==1.0.2
 django-js-reverse==0.7.3
 django-allauth==0.31.0
-djangorestframework==3.6.2
+djangorestframework==3.11.2
 Markdown==2.6.8
 coreapi==2.3.0
 Pillow==4.0.0
